@@ -1,0 +1,10 @@
+{
+  "name": "html-dummy-text-check",
+  "version": "1.0.0",
+  "scripts": {
+    "check-dummy-text": "node scripts/check-dummy-text.js"
+  },
+  "devDependencies": {
+    "glob": "^7.1.6"
+  }
+}
