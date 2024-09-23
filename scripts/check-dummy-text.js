@@ -14,22 +14,22 @@ const dummyTextPatterns = [
   // /ダミーテキスト。/i, // 日本語のサンプルテキスト
 ];
 
-// HTMLファイルを対象に検索を行う。node_modulesディレクトリは除外
-// **/*.html はリポジトリ内の全てのHTMLファイルを対象
-const files = glob.sync("**/*.html", { ignore: "node_modules/**" });
+// HTMLおよびPHPファイルを対象に検索を行う。node_modulesディレクトリは除外
+// **/*.html と **/*.php はリポジトリ内の全てのHTMLとPHPファイルを対象
+const files = glob.sync("**/*.{html,php}", { ignore: "node_modules/**" });
 
 let hasDummyText = false; // ダミーテキストが見つかったかどうかのフラグ
 
-// すべてのHTMLファイルに対して繰り返し処理を行う
+// すべてのHTMLおよびPHPファイルに対して繰り返し処理を行う
 files.forEach((file) => {
-  // 各HTMLファイルの内容を読み込む
+  // 各ファイルの内容を読み込む
   const content = fs.readFileSync(file, "utf8");
 
   // 各パターンを使ってダミーテキストが含まれているかチェック
   dummyTextPatterns.forEach((pattern) => {
     if (pattern.test(content)) {
       // ダミーテキストが見つかった場合、ファイル名とともにコンソールに出力
-      console.log(`ダミーテキストファイルはこちら ${file}`);
+      console.log(`ダミーテキストファイル ${file}`);
       hasDummyText = true; // フラグを立てる
     }
   });
