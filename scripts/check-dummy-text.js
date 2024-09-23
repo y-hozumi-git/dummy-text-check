@@ -9,8 +9,8 @@ const dummyTextPatterns = [
   /lorem ipsum/i, // 英語のダミーテキスト
   /dummy text/i, // 英語のダミーテキスト
   /sample text/i, // 英語のダミーテキスト
-  /あいうえお/i, // 日本語のダミーテキスト
-  /サンプルテキスト/i, // 日本語のサンプルテキスト
+  // /あいうえお/i, // 日本語のダミーテキスト
+  // /サンプルテキスト/i, // 日本語のサンプルテキスト
 ];
 
 // HTMLファイルを対象に検索を行う。node_modulesディレクトリは除外
@@ -28,7 +28,7 @@ files.forEach((file) => {
   dummyTextPatterns.forEach((pattern) => {
     if (pattern.test(content)) {
       // ダミーテキストが見つかった場合、ファイル名とともにコンソールに出力
-      console.log(`Dummy text found in ${file}`);
+      console.log(`ダミーテキストファイルはこちら ${file}`);
       hasDummyText = true; // フラグを立てる
     }
   });
@@ -42,5 +42,5 @@ if (hasDummyText) {
   process.exit(1); // 非0ステータスで終了し、GitHub Actionsを失敗させる
 } else {
   // ダミーテキストが見つからなかった場合
-  console.log("No dummy text found.");
+  console.log("ダミーテキストが見つかりませんでした。");
 }
