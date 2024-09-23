@@ -36,7 +36,9 @@ files.forEach((file) => {
 
 // ダミーテキストが見つかった場合、エラーメッセージを出力しプロセスを終了
 if (hasDummyText) {
-  console.error("Error: Dummy text found in one or more HTML files.");
+  console.error(
+    "Error: ダミーテキストがファイル内に存在します。修正してください。"
+  );
   process.exit(1); // 非0ステータスで終了し、GitHub Actionsを失敗させる
 } else {
   // ダミーテキストが見つからなかった場合
